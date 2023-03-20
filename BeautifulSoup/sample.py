@@ -1,8 +1,15 @@
-from bs4 import BeautifulSoup
+import json
 import requests
+from bs4 import BeautifulSoup
 
-# send a request to the URL
-url = 'https://www.example.com'
+# read the JSON file
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
+# get the URL from the config dictionary
+url = config['url']
+
+# send a request to the URL and get the response
 response = requests.get(url)
 
 # parse the HTML content using BeautifulSoup
