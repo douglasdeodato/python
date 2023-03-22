@@ -31,3 +31,5 @@ data = {'links': links}
 # write the dictionary to a JSON file
 with open('links.json', 'w') as f:
     json.dump(data, f)
+    # print a message to the terminal
+    print("JSON file created!")
