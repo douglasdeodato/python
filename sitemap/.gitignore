@@ -2,3 +2,6 @@
 .DS_Store
 Thumbs.db
 *.json
+clean-html.html
+sorted_table.html
+sitemap.xml
