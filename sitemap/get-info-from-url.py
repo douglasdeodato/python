@@ -1,10 +1,14 @@
 import re
 from bs4 import BeautifulSoup
 import requests
+import json
+
+# Load the URL from a JSON file
+with open('config.json') as f:
+    config = json.load(f)
+url = config['url']
 
 # Step 1: Sort the table rows alphabetically by name and write to a file called "sorted_table.html"
-url = "https://iahip.org/register"
-
 response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 table = soup.find('table', {'cellpadding': '0', 'cellspacing': '0', 'width': '594'})
@@ -51,7 +55,6 @@ clean_html = re.sub(r'</font>', '', clean_html)
 # Add class to td element containing "MIAHIP" for better SEO
 clean_html = re.sub(r'<td>(MIAHIP)</td>', r'<td class="certification">\1</td>', clean_html)
 
-# Write formatted table code to file
 # Write formatted table code to file
 with open('clean-html.html', 'w') as f:
     f.write('<html>\n<head>\n')
