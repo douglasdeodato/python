@@ -33,3 +33,15 @@ with open('links.json', 'w') as f:
     json.dump(data, f)
     # print a message to the terminal
     print("JSON file created!")
+
+# create an HTML page that displays the links
+html = '<html><body><ul>'
+for link in links:
+    html += f'<li><a href="{link}">{link}</a></li>'
+html += '</ul></body></html>'
+
+# write the HTML to a file
+with open('links.html', 'w') as f:
+    f.write(html)
+    # print a message to the terminal
+    print("HTML file created!")
