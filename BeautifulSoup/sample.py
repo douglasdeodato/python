@@ -15,10 +15,19 @@ response = requests.get(url)
 # parse the HTML content using BeautifulSoup
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# print the title of the webpage
-print(soup.title.string)
+# create an empty list to store the links
+links = []
 
-# find all links on the webpage and print their href values
-links = soup.find_all('a')
-for link in links:
-    print(link.get('href'))
+# find all links on the webpage and append their href values to the links list
+for link in soup.find_all('a'):
+    href = link.get('href')
+    links.append(href)
+    # print the href value
+    print(href)
+
+# create a dictionary to store the links
+data = {'links': links}
+
+# write the dictionary to a JSON file
+with open('links.json', 'w') as f:
+    json.dump(data, f)
